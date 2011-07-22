@@ -1,7 +1,8 @@
 module QueryableResources
-  class Base < InheritedResources::Base #::ApplicationController
+  class Base < InheritedResources::Base
     def self.query_resources(base)
       base.class_eval do
+        load_and_authorize_resource
         respond_to :json
 
         protected
